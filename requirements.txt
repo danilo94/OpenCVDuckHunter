@@ -1,0 +1,6 @@
+numpy
+opencv-python
+pyautogui
+#pillow
+pyscreenshot
+#win32gui

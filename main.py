@@ -1,10 +1,11 @@
-import win32gui
-
+# import win32gui
+import webbrowser
 import numpy as np
 import cv2
 import time
 import pyautogui
-from PIL import ImageGrab
+#from PIL import ImageGrab
+import pyscreenshot as ImageGrab
 
 JogarJogo = True
 VerMascaras = False
@@ -15,18 +16,12 @@ cor_maxima_pato_vermelho = np.array([180,255,255]) # Range máximo para a cor ve
 
 toplist, winlist = [], []
 
-def enum_cb(hwnd, results):
-    winlist.append((hwnd, win32gui.GetWindowText(hwnd)))
-win32gui.EnumWindows(enum_cb, toplist)
-
-
-firefox = [(hwnd, title) for hwnd, title in winlist if 'firefox' in title.lower()]
-firefox = firefox[0]
-hwnd = firefox[0]
+webbrowser.register('firefox',None,webbrowser.BackgroundBrowser("firefox"))
+webbrowser.get('firefox').open('https://duckhuntjs.com/')
 
 valores_desejados = [16,25,34,12,11,30]
-win32gui.SetForegroundWindow(hwnd)
-bbox = win32gui.GetWindowRect(hwnd)
+
+bbox = (0,0,800,600)
 
 while True:
     try:
